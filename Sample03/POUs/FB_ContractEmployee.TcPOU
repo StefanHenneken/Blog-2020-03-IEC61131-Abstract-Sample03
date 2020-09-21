@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_ContractEmployee" Id="{157c2f82-61ed-4d42-a2ee-c21047f94b9c}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'hide_all_locals'}
+FUNCTION_BLOCK PUBLIC FB_ContractEmployee EXTENDS FB_Employee
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	nHourlyPayBacking		:	UINT;
+	nMonthlyHoursBacking	:	UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="GetMonthlySalary" Id="{c12eb332-fc82-426a-92c7-ec1217ac0d92}">
+      <Declaration><![CDATA[METHOD PUBLIC GetMonthlySalary : LREAL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetMonthlySalary := nMonthlyHours * nHourlyPay;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="nHourlyPay" Id="{294cabb8-8983-44d0-9f47-aa45aceec345}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC nHourlyPay : UINT]]></Declaration>
+      <Get Name="Get" Id="{c566c18c-1dca-4565-bee7-f47cc650fe47}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[nHourlyPay := nHourlyPayBacking;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{899ca572-f74e-43b8-9a9e-1c911edee194}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[nHourlyPayBacking := nHourlyPay;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="nMonthlyHours" Id="{606408a0-2842-4236-803f-0fb36ca0db85}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC nMonthlyHours : UINT]]></Declaration>
+      <Get Name="Get" Id="{65306d45-cbf4-4435-8653-c51df6bc280d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[nMonthlyHours := nMonthlyHoursBacking;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{e354902e-0201-448c-a8d1-3b3b6b839fd5}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[nMonthlyHoursBacking := nMonthlyHours;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="FB_ContractEmployee">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ContractEmployee.GetMonthlySalary">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ContractEmployee.nHourlyPay.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ContractEmployee.nHourlyPay.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ContractEmployee.nMonthlyHours.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ContractEmployee.nMonthlyHours.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
